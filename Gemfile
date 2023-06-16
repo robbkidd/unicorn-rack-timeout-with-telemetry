@@ -6,6 +6,7 @@ gem "rails", "~> 7.0.5"
 gem "sprockets-rails"
 gem "sqlite3", "~> 1.4"
 gem "unicorn", "~> 6.1"
+gem "rack-timeout"
 
 # OpenTelemetry & instrumentation
 gem 'opentelemetry-sdk'

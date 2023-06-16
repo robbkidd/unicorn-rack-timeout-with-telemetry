@@ -1,5 +1,10 @@
 local_resource('unreliable app',
     serve_cmd='bundle exec unicorn --config-file config/unicorn.rb',
+    serve_env={
+        'OTEL_SERVICE_NAME': 'unreliable-app',
+        'RACK_TIMEOUT_SERVICE_TIMEOUT': '10',
+        'RACK_TIMEOUT_TERM_ON_TIMEOUT': '2',
+    },
     links=[
         link('http://localhost:8080/', 'GET'),
         link('http://localhost:8080/sleepy?nap_seconds=10', 'SLEEPY GET'),
