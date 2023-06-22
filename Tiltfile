@@ -12,11 +12,9 @@ local_resource('unreliable app',
     ]
 )
 
-# go install github.com/CtrlSpice/otel-desktop-viewer@latest
-# it's pretty dope!
-local_resource('trace viewer',
-    serve_cmd='./bin/otel-desktop-viewer',
-    links=[link('http://localhost:8000/', 'View Traces')]
+local_resource('otel collector',
+    serve_cmd='docker run --rm --env HONEYCOMB_API_KEY --volume ./otel-coll-config.yaml:/etc/otelcol-contrib/config.yaml --publish "127.0.0.1:4318:4318" otel/opentelemetry-collector-contrib:0.80.0',
+    deps=['otel-coll-config.yaml']
 )
 
 local_resource('poke',
