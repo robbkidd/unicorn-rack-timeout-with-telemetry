@@ -1,4 +1,5 @@
 local_resource('unreliable app',
+    cmd='ruby ./bin/hack-patch-rack-timeout.rb',
     serve_cmd='bundle exec unicorn --config-file config/unicorn.rb',
     serve_env={
         'OTEL_SERVICE_NAME': 'unreliable-app',
